@@ -14,5 +14,9 @@
     "midfin": "https://midfinco.com",
     "maoi": "https://www.instagram.com/maoiswim",
     "maoiHandle": "@maoiswim"
+  },
+  "allocations": {
+    "showFrom": "2026-11-29",
+    "override": null
   }
 }

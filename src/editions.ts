@@ -1,6 +1,7 @@
 import data from '../data/editions.json';
 import { FIN_PATH } from './fin-path';
 import { COPY } from './copy';
+import { allocationsVisible } from './config';
 
 export type Status = 'open' | 'kept' | 'allocated' | 'kilo' | 'sold';
 export interface Edition {
@@ -12,7 +13,11 @@ export interface Edition {
 
 export const editions = (data as { editions: Edition[] }).editions;
 
-export const openCount = (): number => editions.filter((e) => e.status === 'open').length;
+/** What the public sees. While allocations are hidden, a shop's fins look open and carry no label. */
+export const visible = (): Edition[] =>
+  editions.map((e) => (e.status === 'allocated' && !allocationsVisible() ? { ...e, status: 'open', label: null } : e));
+
+export const openCount = (): number => visible().filter((e) => e.status === 'open').length;
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -38,8 +43,9 @@ export function renderGrid(): void {
   const section = grid.closest('section') as HTMLElement;
   const frag = document.createDocumentFragment();
 
+  const shown = visible();
   let firstTall = true;
-  for (const e of editions) {
+  for (const e of shown) {
     const li = document.createElement('li');
     li.className = 'ed';
     if (e.size === '10.5in' && firstTall) {
@@ -73,7 +79,7 @@ export function renderGrid(): void {
   // One tooltip, positioned over the active fin.
   let active: HTMLButtonElement | null = null;
   const show = (btn: HTMLButtonElement) => {
-    const e = editions[Number(btn.dataset.no) - 1];
+    const e = shown[Number(btn.dataset.no) - 1];
     const size = COPY.sizeLabel[e.size];
     tip.innerHTML = `<strong>No. ${pad(e.no)}</strong>, ${size}${e.label ? `<br>${escapeHtml(e.label)}` : ''}`;
     const b = btn.getBoundingClientRect();
@@ -125,7 +131,7 @@ export function renderCount(): void {
 /** Shops holding numbers: allocated entries, deduped by label, in first-seen order. */
 export function shopNames(): string[] {
   const seen = new Set<string>();
-  for (const e of editions) {
+  for (const e of visible()) {
     if (e.status === 'allocated' && e.label) seen.add(e.label.trim());
   }
   return [...seen];
