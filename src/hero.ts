@@ -78,24 +78,24 @@ export class Hero {
   }
 
   /** The cut: line traces the outline, field dims, the piece lifts, the lockup and name resolve. */
-  playCut(delay = 0.4): void {
+  playCut(delay = 0.15): void {
     if (this.played) return;
     this.played = true;
     const { cut, dim, piece, copy, svg, mark } = this;
     const tl = gsap.timeline({ delay });
     tl.to(mark, { opacity: 0, duration: 0.8 }, 0)
-      .to(cut, { strokeDashoffset: 0, duration: 2.1, ease: 'power2.inOut' })
-      .to(dim, { attr: { opacity: 0.82 }, duration: 1.3, ease: 'power2.out' }, '-=0.15')
+      .to(cut, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut' })
+      .to(dim, { attr: { opacity: 0.82 }, duration: 0.7, ease: 'power2.out' }, '-=0.25')
       .set(piece, { attr: { opacity: 1 } }, '<')
       .fromTo(
         piece,
         { scale: 1, y: 0, transformOrigin: '50% 50%' },
-        { scale: 1.035, y: -FIN_H * 0.02, duration: 1.4, ease: 'power3.out' },
+        { scale: 1.035, y: -FIN_H * 0.02, duration: 0.8, ease: 'power3.out' },
         '<'
       )
-      .to(cut, { attr: { opacity: 0.35 }, duration: 1.2 }, '<')
-      .call(() => piece.setAttribute('filter', 'url(#lift)'), [], '>-0.3')
-      .to(copy, { opacity: 1, duration: 1.1, ease: 'power2.out' }, '-=0.8')
+      .to(cut, { attr: { opacity: 0.35 }, duration: 0.7 }, '<')
+      .call(() => piece.setAttribute('filter', 'url(#lift)'), [], '>-0.2')
+      .to(copy, { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.55')
       // then a very slow breathing drift of the whole field, fin included
       .call(() => {
         gsap.fromTo(
