@@ -11,6 +11,7 @@ export const config = raw as {
   b2bLoginUrl: string;
   klaviyo: { companyId: string; listId: string };
   showPostPhaseBuyLink: boolean;
+  allocations: { showFrom: string; override: boolean | null };
   links: { midfin: string; maoi: string; maoiHandle: string };
 };
 
@@ -43,3 +44,14 @@ export const klaviyoConfigured =
   config.klaviyo.listId !== PLACEHOLDER &&
   config.klaviyo.companyId.length > 0 &&
   config.klaviyo.listId.length > 0;
+
+/** Shops holding numbers stay invisible (their fins look open) until showFrom, Honolulu time, or the override. */
+export function allocationsVisible(): boolean {
+  if (import.meta.env.DEV) {
+    const a = new URLSearchParams(location.search).get('allocations');
+    if (a === 'on') return true;
+    if (a === 'off') return false;
+  }
+  if (config.allocations.override !== null) return config.allocations.override;
+  return honoluluToday() >= config.allocations.showFrom;
+}

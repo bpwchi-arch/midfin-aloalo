@@ -11,10 +11,13 @@ import { initAnalytics, track } from './analytics';
 
 document.documentElement.classList.remove('no-js');
 
-// Dev-only switches for QA: ?phase=pre|event|post  ?motion=reduce  ?gl=off  ?sold=all
+// Dev-only switches for QA: ?phase=pre|event|post  ?motion=reduce  ?gl=off  ?sold=all  ?allocations=on|off  ?demo=shops
 const dev = import.meta.env.DEV ? new URLSearchParams(location.search) : null;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches || dev?.get('motion') === 'reduce';
 if (dev?.get('sold') === 'all') for (const e of editions) if (e.status === 'open') e.status = 'sold';
+if (dev?.get('demo') === 'shops') {
+  for (const n of [12, 13, 30]) Object.assign(editions[n - 1], { status: 'allocated', label: n === 30 ? 'Demo Shop B' : 'Demo Shop A' });
+}
 const phase = computePhase();
 document.body.dataset.phase = phase;
 

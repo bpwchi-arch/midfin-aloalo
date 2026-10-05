@@ -18,6 +18,10 @@ npm run preview    # serves dist/
 
 `data/editions.json` is the single source of truth. Each entry has `no`, `size`, `status` and `label`. Change a `status` to one of `open`, `kept`, `allocated`, `kilo`, `sold`, set `label` to what the public should see on hover (or `null`), commit, and push. Vercel rebuilds the site. The live count, the grid, and the "shops holding numbers" list are all computed from this file; shops appear automatically from `allocated` entries, deduped by label, so give every fin a shop holds the same label, for example `"Allocated — Surf N Sea"`.
 
+## Shop allocations stay hidden until November 29
+
+Kilo's rules say nothing is spoken for before the event, so `allocated` fins look open to the public (no rose fill, no label, counted as open, no shop list) until the date in `site.config.json` under `allocations.showFrom` (`2026-11-29`, Honolulu time). To force it earlier or later, set `allocations.override` to `true` or `false`; `null` lets the date decide. You can enter shop allocations in `data/editions.json` any time; they simply do not show until then.
+
 ## Change the phase
 
 The page reads Honolulu time and switches on its own: `pre` before November 28, `event` on the day, `post` after. To force a state, set `phaseOverride` in `site.config.json` to `"pre"`, `"event"` or `"post"` (back to `null` to let the date decide). In local dev you can also append `?phase=post` to the URL.
