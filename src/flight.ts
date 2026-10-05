@@ -147,7 +147,7 @@ export function startFlight(heroSvg: Hero, tileImg: HTMLImageElement): void {
     tilt.x += (tiltTarget.x - tilt.x) * 0.05;
     tilt.y += (tiltTarget.y - tilt.y) * 0.05;
 
-    const land = smooth(0.64, 0.82, p);
+    const land = smooth(0.56, 0.7, p);
     const v = heroSvg.view;
     program.uniforms.uTime.value = (now - t0) / 1000;
     program.uniforms.uFlight.value = flight;
@@ -163,7 +163,7 @@ export function startFlight(heroSvg: Hero, tileImg: HTMLImageElement): void {
       landed = true;
       renderer.render({ scene: mesh });
       canvas.classList.remove('is-on');
-      heroSvg.playCut(0.2);
+      heroSvg.playCut(0.05);
       return; // the SVG holds the identical frame from here on
     }
     renderer.render({ scene: mesh });
