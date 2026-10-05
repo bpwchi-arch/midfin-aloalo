@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aloalo.midfinco.com/sitemap.xml

@@ -1,0 +1,457 @@
+{
+ "_readme": "Single source of truth for the 75 grid. Austin edits this file and redeploys. status: open | kept | allocated | kilo | sold. label is shown publicly on hover/tap; null shows nothing. Sizes: #01-60 are 10in (50 retail + 10 photo/promo), #61-75 are 10.5in (Vetter bigger-fin campaign).",
+ "total": 75,
+ "updated": "2026-10-04",
+ "editions": [
+  {
+   "no": 1,
+   "size": "10in",
+   "status": "kept",
+   "label": "Kept \u2014 Mid Fin"
+  },
+  {
+   "no": 2,
+   "size": "10in",
+   "status": "kept",
+   "label": "Kept \u2014 Mid Fin"
+  },
+  {
+   "no": 3,
+   "size": "10in",
+   "status": "kept",
+   "label": "Kept \u2014 Mid Fin"
+  },
+  {
+   "no": 4,
+   "size": "10in",
+   "status": "kept",
+   "label": "Kept \u2014 Cayla, MAOI"
+  },
+  {
+   "no": 5,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 6,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 7,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 8,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 9,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 10,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 11,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 12,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 13,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 14,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 15,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 16,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 17,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 18,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 19,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 20,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 21,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 22,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 23,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 24,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 25,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 26,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 27,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 28,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 29,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 30,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 31,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 32,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 33,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 34,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 35,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 36,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 37,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 38,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 39,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 40,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 41,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 42,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 43,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 44,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 45,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 46,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 47,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 48,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 49,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 50,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 51,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 52,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 53,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 54,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 55,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 56,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 57,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 58,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 59,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 60,
+   "size": "10in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 61,
+   "size": "10.5in",
+   "status": "kept",
+   "label": "Lauren Vetter"
+  },
+  {
+   "no": 62,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 63,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 64,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 65,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 66,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 67,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 68,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 69,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 70,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 71,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 72,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 73,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 74,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  },
+  {
+   "no": 75,
+   "size": "10.5in",
+   "status": "open",
+   "label": null
+  }
+ ]
+}

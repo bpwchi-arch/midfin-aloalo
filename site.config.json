@@ -1,0 +1,18 @@
+{
+  "phaseOverride": null,
+  "eventDateHST": "2026-11-28",
+  "timezone": "Pacific/Honolulu",
+  "productUrl": "https://midfinco.com/products/maoi-common",
+  "b2bApplicationUrl": "https://midfinco.com/pages/b2b-application",
+  "b2bLoginUrl": "https://midfinco.com/pages/b2b-login",
+  "klaviyo": {
+    "companyId": "XY75NE",
+    "listId": "XJCr7Q"
+  },
+  "showPostPhaseBuyLink": true,
+  "links": {
+    "midfin": "https://midfinco.com",
+    "maoi": "https://www.instagram.com/maoiswim",
+    "maoiHandle": "@maoiswim"
+  }
+}

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aloalo — Mid Fin × MAOI</title>
+  <meta name="description" content="75 fins. Made once. Mid Fin × MAOI Swim, Aloalo colorway, on the 10 inch Common." />
+  <meta name="theme-color" content="#202820" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://aloalo.midfinco.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aloalo — Mid Fin × MAOI" />
+  <meta property="og:description" content="75 fins. Made once." />
+  <meta property="og:url" content="https://aloalo.midfinco.com/" />
+  <meta property="og:image" content="https://aloalo.midfinco.com/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="./fonts/LT-Motor-Oil-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/aloalo-tile-1000.webp" as="image" type="image/webp" fetchpriority="high" />
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body data-phase="pre">
+  <a class="skip" href="#the-75">Skip to the edition</a>
+
+  <div id="dev-note" class="dev-note" hidden></div>
+
+  <!-- 5.1 Hero: the flight, then the cut -->
+  <div class="hero-track" id="hero-track">
+  <header class="hero" id="hero">
+    <svg class="hero-field" id="hero-svg" aria-hidden="true" focusable="false" viewBox="0 0 3900 3450" preserveAspectRatio="none">
+      <defs>
+        <pattern id="print" patternUnits="userSpaceOnUse" x="54" y="184" width="3600" height="3600">
+          <image id="print-img" href="./assets/aloalo-tile-1000.webp" width="3600" height="3600" />
+        </pattern>
+        <filter id="lift" x="-10%" y="-10%" width="120%" height="130%" color-interpolation-filters="sRGB">
+          <feDropShadow dx="0" dy="60" stdDeviation="70" flood-color="#000" flood-opacity="0.55" />
+        </filter>
+      </defs>
+      <rect class="hero-print" x="-40000" y="-40000" width="80000" height="80000" fill="url(#print)" />
+      <rect class="hero-dim" id="hero-dim" x="-40000" y="-40000" width="80000" height="80000" fill="#202820" opacity="0" />
+      <g id="hero-piece" class="hero-piece" opacity="0">
+        <path id="hero-piece-path" fill="url(#print)" d="" />
+      </g>
+      <path id="hero-cut" class="hero-cut" d="" fill="none" stroke="#DC1F26" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" pathLength="1" />
+    </svg>
+
+    <canvas class="hero-flight" id="hero-flight" aria-hidden="true"></canvas>
+    <img class="hero-mark" id="hero-mark" src="./assets/logo-midfin-x-maoi-cream-600.png" width="600" height="211" alt="" aria-hidden="true" fetchpriority="high" />
+    <div class="hero-cue" id="hero-cue" aria-hidden="true" hidden><span></span></div>
+
+    <div class="hero-copy" id="hero-copy">
+      <img class="hero-lockup" src="./assets/logo-midfin-x-maoi-cream-1200.png" width="1200" height="422" alt="Mid Fin × MAOI" decoding="async" />
+      <h1 class="hero-title">Aloalo</h1>
+      <p class="hero-line">75 fins. Made once.</p>
+      <p class="phase-note" id="phase-note" hidden></p>
+    </div>
+  </header>
+  </div>
+
+  <main>
+    <!-- 5.3 The 75 -->
+    <section class="editions" id="the-75" aria-labelledby="editions-heading">
+      <div class="editions-head">
+        <h2 class="display" id="editions-heading">Seventy-five, ever.</h2>
+        <p class="editions-sub">Sixty at 10", fifteen at 10.5". None will be made again.</p>
+      </div>
+      <p class="count" id="count" aria-live="polite"></p>
+      <ol class="grid" id="grid" aria-label="Edition numbers 01 to 75"></ol>
+      <div class="tip" id="tip" role="tooltip" hidden></div>
+    </section>
+
+    <!-- 5.5 Where to find it -->
+    <section class="where" id="where" aria-labelledby="where-heading">
+      <h2 class="display" id="where-heading">Where to find one</h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-n" aria-hidden="true"></span>
+          <p>Kilo Summit. Saturday, November 28, Kaimukī. In person only.</p>
+        </li>
+        <li class="step" id="step-shops" hidden>
+          <span class="step-n" aria-hidden="true"></span>
+          <div>
+            <p>Then the shops holding numbers.</p>
+            <ul class="shops" id="shops"></ul>
+          </div>
+        </li>
+        <li class="step" id="step-online">
+          <span class="step-n" aria-hidden="true"></span>
+          <p id="step-online-copy">Then online, only if any remain.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 5.2 Set in glass -->
+    <section class="glass" id="glass" aria-labelledby="glass-line">
+      <div class="glass-stage" id="glass-stage">
+        <picture class="glass-fallback" id="glass-fallback">
+          <source srcset="./assets/aloalo-fin-flatlay.webp" type="image/webp" />
+          <img src="./assets/aloalo-fin-flatlay.png" width="1078" height="1043" alt="The Aloalo fin. The print sits inside clear fiberglass and reads softer, like stained glass." loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <p class="glass-line" id="glass-line">The print MAOI swims in, set in glass.</p>
+    </section>
+
+    <!-- 5.6 Waitlist -->
+    <section class="waitlist" id="waitlist" aria-labelledby="waitlist-heading">
+      <h2 class="display" id="waitlist-heading">If any are left</h2>
+      <p class="waitlist-line" id="waitlist-line">One email, after November 28. That's it.</p>
+      <form class="waitlist-form" id="waitlist-form" novalidate>
+        <label class="visually-hidden" for="email">Email</label>
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required />
+        <button type="submit" id="waitlist-btn">Join the list</button>
+      </form>
+      <p class="waitlist-status" id="waitlist-status" role="status" aria-live="polite"></p>
+      <p class="post-line" id="post-line" hidden></p>
+    </section>
+
+    <!-- 5.7 Shop buyers -->
+    <section class="b2b" id="b2b" aria-label="Shop buyers">
+      <p><a id="b2b-apply" href="https://midfinco.com/pages/b2b-application">Shop buyers: request an allocation</a></p>
+      <p class="b2b-login"><a id="b2b-login" href="https://midfinco.com/pages/b2b-login">Existing shop accounts</a></p>
+    </section>
+  </main>
+
+  <!-- 5.8 Footer -->
+  <footer class="footer">
+    <img class="footer-lockup" src="./assets/logo-midfin-x-maoi-cream.png" width="1693" height="595" alt="Mid Fin × MAOI" loading="lazy" decoding="async" />
+    <ul class="footer-links">
+      <li><a id="link-midfin" href="https://midfinco.com">midfinco.com</a></li>
+      <li><a id="link-maoi" href="https://www.instagram.com/maoiswim">@maoiswim</a></li>
+    </ul>
+    <p class="footer-credit">Made for Kilo Summit × Keep it Kaimukī, Small Business Saturday, 2026.</p>
+  </footer>
+
+  <!-- Shared silhouette for the 75 grid -->
+  <svg class="defs" aria-hidden="true" focusable="false" width="0" height="0">
+    <defs>
+      <symbol id="fin" viewBox="-60 -60 3486 3113" preserveAspectRatio="xMidYMid meet">
+        <path id="fin-shape" d="" vector-effect="non-scaling-stroke" />
+      </symbol>
+      <pattern id="print-sm" patternUnits="userSpaceOnUse" x="-214" y="-44" width="3600" height="3600">
+        <image href="./assets/aloalo-tile-1000.webp" width="3600" height="3600" />
+      </pattern>
+    </defs>
+  </svg>
+</body>
+</html>
