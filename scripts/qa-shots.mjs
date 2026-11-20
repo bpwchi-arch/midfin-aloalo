@@ -49,7 +49,7 @@ async function shoot(name, { width, height, url = BASE, reduced = false, scale =
   }
   // let the glass section load, then full page
   await page.evaluate(() => document.getElementById('glass').scrollIntoView());
-  await sleep(2500);
+  await sleep(1500);
   await page.screenshot({ path: `${OUT}/${name}-03-glass.png` });
   await page.evaluate(() => window.scrollTo(0, 0));
   await sleep(300);
@@ -59,7 +59,7 @@ async function shoot(name, { width, height, url = BASE, reduced = false, scale =
     count: document.getElementById('count').textContent,
     buyLinks: document.querySelectorAll('a[href*="products/maoi-common"]').length,
     overflow: document.documentElement.scrollWidth > innerWidth,
-    gl: document.getElementById('glass-stage').classList.contains('is-gl'),
+    pinned: document.getElementById('reel').classList.contains('is-pinned'),
     flight: document.getElementById('hero-track').classList.contains('is-flight'),
     text: document.body.innerText.includes('!'),
   }));
@@ -72,7 +72,7 @@ await shoot('w768', { width: 768, height: 1024, scale: 2 });
 await shoot('w1440', { width: 1440, height: 900 });
 await shoot('w2560', { width: 2560, height: 1440 });
 await shoot('reduced', { width: 390, height: 844, scale: 2, reduced: true, fly: false });
-await shoot('glOff', { width: 1440, height: 900, url: BASE + '?gl=off&flight=off', fly: false });
+await shoot('flightOff', { width: 1440, height: 900, url: BASE + '?flight=off', fly: false });
 await shoot('postSold', { width: 1440, height: 900, url: BASE + '?phase=post&sold=all', fly: false });
 await shoot('event', { width: 390, height: 844, scale: 2, url: BASE + '?phase=event', fly: false });
 

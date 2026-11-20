@@ -73,13 +73,9 @@ void main() {
   outColor = vec4(col, 1.0);
 }`;
 
+/** Cheap capability check. Creating the context is left to startFlight, which can still fail and fall back. */
 export function supportsFlight(): boolean {
-  try {
-    const c = document.createElement('canvas');
-    return !!c.getContext('webgl2');
-  } catch {
-    return false;
-  }
+  return typeof WebGL2RenderingContext !== 'undefined';
 }
 
 export function startFlight(heroSvg: Hero, tileImg: HTMLImageElement): void {
@@ -87,6 +83,8 @@ export function startFlight(heroSvg: Hero, tileImg: HTMLImageElement): void {
   const track = document.getElementById('hero-track') as HTMLElement;
   const mark = document.getElementById('hero-mark') as HTMLElement;
   const cue = document.getElementById('hero-cue') as HTMLElement;
+  const film = document.getElementById('hero-film') as HTMLElement;
+  const filmVideo = document.getElementById('hero-film-video') as HTMLVideoElement;
 
   const renderer = new Renderer({ canvas, webgl: 2, dpr: Math.min(devicePixelRatio || 1, innerWidth < 800 ? 1.5 : 2), alpha: false, antialias: false });
   const gl = renderer.gl;
@@ -132,10 +130,15 @@ export function startFlight(heroSvg: Hero, tileImg: HTMLImageElement): void {
   let last = performance.now();
   const t0 = last;
 
+  // Measured on resize only, so the frame loop never forces layout.
+  let max = track.offsetHeight - innerHeight;
+  addEventListener('resize', () => (max = track.offsetHeight - innerHeight), { passive: true });
   function progress(): number {
-    const max = track.offsetHeight - innerHeight;
     return max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 1;
   }
+  let lastDive = -1;
+  let lastLand = -1;
+  let lastCue = -1;
 
   function frame(now: number): void {
     const dt = Math.min(0.05, (now - last) / 1000);
@@ -147,26 +150,53 @@ export function startFlight(heroSvg: Hero, tileImg: HTMLImageElement): void {
     tilt.x += (tiltTarget.x - tilt.x) * 0.05;
     tilt.y += (tiltTarget.y - tilt.y) * 0.05;
 
-    const land = smooth(0.56, 0.7, p);
+    // Act one is the film. It pushes in and dissolves into the print as the scroll begins.
+    const dive = smooth(0.02, 0.2, p);
+    if (dive !== lastDive) {
+      lastDive = dive;
+      if (dive < 1) {
+        film.style.opacity = String(1 - dive);
+        film.style.transform = `scale(${(1 + dive * 0.3).toFixed(4)})`;
+        film.style.visibility = '';
+        if (filmVideo.paused && filmVideo.classList.contains('is-playing')) filmVideo.play().catch(() => {});
+      } else {
+        film.style.visibility = 'hidden';
+        filmVideo.pause();
+      }
+    }
+
+    const land = smooth(0.6, 0.74, p);
     const v = heroSvg.view;
     program.uniforms.uTime.value = (now - t0) / 1000;
     program.uniforms.uFlight.value = flight;
     program.uniforms.uTilt.value = [tilt.x, tilt.y];
     program.uniforms.uView.value = [v.x, v.y, v.w, v.h];
     program.uniforms.uLand.value = land;
-    program.uniforms.uIn.value = Math.min(1, (now - t0) / 1400);
+    program.uniforms.uIn.value = 1;
 
-    mark.style.opacity = String(1 - land);
-    cue.style.opacity = String(1 - smooth(0.05, 0.25, p));
+    if (land !== lastLand) {
+      lastLand = land;
+      mark.style.opacity = String(1 - land);
+    }
+    const cueOut = smooth(0.04, 0.2, p);
+    if (cueOut !== lastCue) {
+      lastCue = cueOut;
+      cue.style.opacity = String(1 - cueOut);
+    }
 
     if (!landed && land >= 1) {
       landed = true;
       renderer.render({ scene: mesh });
       canvas.classList.remove('is-on');
+      film.hidden = true;
+      filmVideo.pause();
+      filmVideo.removeAttribute('src');
+      filmVideo.load();
       heroSvg.playCut(0.05);
       return; // the SVG holds the identical frame from here on
     }
-    renderer.render({ scene: mesh });
+    // Nothing to draw while the film still covers the canvas completely.
+    if (dive > 0) renderer.render({ scene: mesh });
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);

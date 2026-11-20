@@ -17,7 +17,8 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preload" href="./fonts/LT-Motor-Oil-Regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="./assets/aloalo-tile-1000.webp" as="image" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(max-aspect-ratio: 4/5)" imagesrcset="./film/hero-tall-700.webp 700w, ./film/hero-tall-1100.webp 1100w" imagesizes="100vw" />
+  <link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(min-aspect-ratio: 4/5)" imagesrcset="./film/hero-800.webp 800w, ./film/hero-1400.webp 1400w, ./film/hero-2400.webp 2400w" imagesizes="100vw" />
   <script type="module" src="/src/main.ts"></script>
 </head>
 <body data-phase="pre">
@@ -46,7 +47,15 @@
     </svg>
 
     <canvas class="hero-flight" id="hero-flight" aria-hidden="true"></canvas>
-    <img class="hero-mark" id="hero-mark" src="./assets/logo-midfin-x-maoi-cream-600.png" width="600" height="211" alt="" aria-hidden="true" fetchpriority="high" />
+    <div class="hero-film" id="hero-film" aria-hidden="true">
+      <picture>
+        <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="./film/hero-tall-700.webp 700w, ./film/hero-tall-1100.webp 1100w" sizes="100vw" />
+        <source type="image/webp" srcset="./film/hero-800.webp 800w, ./film/hero-1400.webp 1400w, ./film/hero-2400.webp 2400w" sizes="100vw" />
+        <img class="hero-film-poster" src="./film/hero-1400.webp" width="2400" height="1350" alt="" fetchpriority="high" />
+      </picture>
+      <video class="hero-film-video" id="hero-film-video" muted playsinline loop preload="none" disablepictureinpicture></video>
+    </div>
+    <img class="hero-mark" id="hero-mark" src="./assets/logo-midfin-x-maoi-cream-600.png" width="600" height="211" alt="" aria-hidden="true" />
     <div class="hero-cue" id="hero-cue" aria-hidden="true" hidden><span></span></div>
 
     <div class="hero-copy" id="hero-copy">
@@ -70,19 +79,50 @@
       <div class="tip" id="tip" role="tooltip" hidden></div>
     </section>
 
-    <!-- 5.4 Worn: MAOI's Aloalo, on Cayla, with the fin -->
-    <section class="worn" id="worn" aria-label="The Aloalo print, worn">
-      <figure class="worn-a">
-        <picture>
-          <source type="image/webp" srcset="./assets/cayla-shore-700.webp 700w, ./assets/cayla-shore-1100.webp 1100w, ./assets/cayla-shore-1600.webp 1600w" sizes="(min-width: 900px) 42vw, 100vw" />
-          <img src="./assets/cayla-shore-1100.jpg" width="1341" height="2000" alt="Kneeling on sand in the Aloalo print with a yellow hibiscus behind one ear, holding a longboard upright so its Aloalo fin stands against the sky." loading="lazy" decoding="async" />
-        </picture>
+    <!-- 5.4a The reel: frames from the film -->
+    <section class="reel" id="reel" aria-label="Frames from the film">
+      <div class="reel-pin" id="reel-pin">
+        <div class="reel-row" id="reel-row">
+          <figure class="reel-frame"><img src="./film/frame-01-900.webp" srcset="./film/frame-01-900.webp 900w, ./film/frame-01-1600.webp 1600w" sizes="(min-width: 900px) 115vh, 84vw" width="1600" height="900" alt="Open water at first light, an islet on the horizon." loading="lazy" decoding="async" /></figure>
+          <figure class="reel-frame"><img src="./film/frame-04-900.webp" srcset="./film/frame-04-900.webp 900w, ./film/frame-04-1600.webp 1600w" sizes="(min-width: 900px) 115vh, 84vw" width="1600" height="900" alt="Three people carrying longboards along the shoreline." loading="lazy" decoding="async" /></figure>
+          <figure class="reel-frame"><img src="./film/frame-07-900.webp" srcset="./film/frame-07-900.webp 900w, ./film/frame-07-1600.webp 1600w" sizes="(min-width: 900px) 115vh, 84vw" width="1600" height="900" alt="The Aloalo fin against a blue sky, seen from under the board." loading="lazy" decoding="async" /></figure>
+          <figure class="reel-frame"><img src="./film/frame-08-900.webp" srcset="./film/frame-08-900.webp 900w, ./film/frame-08-1600.webp 1600w" sizes="(min-width: 900px) 115vh, 84vw" width="1600" height="900" alt="A hand resting on the Aloalo fin, the hibiscus print lit through." loading="lazy" decoding="async" /></figure>
+          <figure class="reel-frame"><img src="./film/frame-06-900.webp" srcset="./film/frame-06-900.webp 900w, ./film/frame-06-1600.webp 1600w" sizes="(min-width: 900px) 115vh, 84vw" width="1600" height="900" alt="The fin on an upturned pink board as water runs off it." loading="lazy" decoding="async" /></figure>
+          <figure class="reel-frame"><img src="./film/frame-11-900.webp" srcset="./film/frame-11-900.webp 900w, ./film/frame-11-1600.webp 1600w" sizes="(min-width: 900px) 115vh, 84vw" width="1600" height="900" alt="A silhouette walking the nose of a longboard on a small wave." loading="lazy" decoding="async" /></figure>
+          <figure class="reel-frame"><img src="./film/frame-10-900.webp" srcset="./film/frame-10-900.webp 900w, ./film/frame-10-1600.webp 1600w" sizes="(min-width: 900px) 115vh, 84vw" width="1600" height="900" alt="The fin under a pink board, seen from above through clear shallows." loading="lazy" decoding="async" /></figure>
+          <figure class="reel-frame"><img src="./film/frame-19-900.webp" srcset="./film/frame-19-900.webp 900w, ./film/frame-19-1600.webp 1600w" sizes="(min-width: 900px) 115vh, 84vw" width="1600" height="900" alt="Half under the surface: the fin below, a board and the sky above." loading="lazy" decoding="async" /></figure>
+          <figure class="reel-frame"><img src="./film/frame-22-900.webp" srcset="./film/frame-22-900.webp 900w, ./film/frame-22-1600.webp 1600w" sizes="(min-width: 900px) 115vh, 84vw" width="1600" height="900" alt="Someone in the water holding a board overhead, its fin beside their face." loading="lazy" decoding="async" /></figure>
+          <figure class="reel-frame"><img src="./film/frame-24-900.webp" srcset="./film/frame-24-900.webp 900w, ./film/frame-24-1600.webp 1600w" sizes="(min-width: 900px) 115vh, 84vw" width="1600" height="900" alt="A rainbow over a green ridge, three people in the water below it." loading="lazy" decoding="async" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5.4b The spread: film photographs -->
+    <section class="spread" id="spread" aria-label="The Aloalo print and the fin, photographed on film">
+      <figure class="sp sp-flower" data-speed="0.04">
+        <img src="./film/photo-000032-1200.webp" srcset="./film/photo-000032-700.webp 700w, ./film/photo-000032-1200.webp 1200w, ./film/photo-000032-2000.webp 2000w" sizes="(min-width: 900px) 64vw, 100vw" width="2000" height="1341" alt="Two sandy hands holding a yellow hibiscus up against blue water." loading="lazy" decoding="async" />
+        <figcaption class="sp-line">Aloalo is Hawaiian for hibiscus.</figcaption>
       </figure>
-      <figure class="worn-b">
-        <picture>
-          <source type="image/webp" srcset="./assets/cayla-water-700.webp 700w, ./assets/cayla-water-1100.webp 1100w, ./assets/cayla-water-1600.webp 1600w" sizes="(min-width: 900px) 36vw, 100vw" />
-          <img src="./assets/cayla-water-1100.jpg" width="1341" height="1700" alt="Waist deep in blue water in the Aloalo print, one hand on a longboard whose Aloalo fin catches the light." loading="lazy" decoding="async" />
-        </picture>
+      <figure class="sp sp-face" data-speed="-0.06">
+        <img src="./film/photo-000026-900.webp" srcset="./film/photo-000026-560.webp 560w, ./film/photo-000026-900.webp 900w, ./film/photo-000026-1400.webp 1400w" sizes="(min-width: 900px) 38vw, 78vw" width="1400" height="2089" alt="A portrait by the sea, a yellow hibiscus worn at the temple." loading="lazy" decoding="async" />
+      </figure>
+      <figure class="sp sp-fin" data-speed="-0.05">
+        <img src="./film/photo-000004-900.webp" srcset="./film/photo-000004-560.webp 560w, ./film/photo-000004-900.webp 900w, ./film/photo-000004-1400.webp 1400w" sizes="(min-width: 900px) 38vw, 78vw" width="1400" height="2089" alt="The Aloalo fin on a cream board, the print glowing through the glass." loading="lazy" decoding="async" />
+      </figure>
+      <figure class="sp sp-two" data-speed="0.05">
+        <img src="./film/photo-000015-1200.webp" srcset="./film/photo-000015-700.webp 700w, ./film/photo-000015-1200.webp 1200w, ./film/photo-000015-2000.webp 2000w" sizes="(min-width: 900px) 56vw, 100vw" width="2000" height="1341" alt="Two people standing longboards on end at the shoreline, an islet behind them." loading="lazy" decoding="async" />
+      </figure>
+      <figure class="sp sp-shore" data-speed="0.05">
+        <img src="./assets/cayla-shore-1100.jpg" srcset="./assets/cayla-shore-700.webp 700w, ./assets/cayla-shore-1100.webp 1100w, ./assets/cayla-shore-1600.webp 1600w" sizes="(min-width: 900px) 38vw, 78vw" width="1341" height="2000" alt="Kneeling on sand in the Aloalo print with a yellow hibiscus behind one ear, holding a longboard upright so its fin stands against the sky." loading="lazy" decoding="async" />
+      </figure>
+      <figure class="sp sp-water" data-speed="-0.07">
+        <img src="./assets/cayla-water-1100.jpg" srcset="./assets/cayla-water-700.webp 700w, ./assets/cayla-water-1100.webp 1100w, ./assets/cayla-water-1600.webp 1600w" sizes="(min-width: 900px) 38vw, 78vw" width="1341" height="1700" alt="Waist deep in blue water in the Aloalo print, one hand on a longboard whose Aloalo fin catches the light." loading="lazy" decoding="async" />
+      </figure>
+      <figure class="sp sp-dusk" data-speed="-0.04">
+        <img src="./film/photo-000012-900.webp" srcset="./film/photo-000012-560.webp 560w, ./film/photo-000012-900.webp 900w, ./film/photo-000012-1400.webp 1400w" sizes="(min-width: 900px) 38vw, 78vw" width="1400" height="2089" alt="A portrait at dusk beside a pink board, the Aloalo fin above." loading="lazy" decoding="async" />
+      </figure>
+      <figure class="sp sp-sand" data-speed="0.06">
+        <img src="./film/photo-000052-900.webp" srcset="./film/photo-000052-560.webp 560w, ./film/photo-000052-900.webp 900w, ./film/photo-000052-1400.webp 1400w" sizes="(min-width: 900px) 38vw, 78vw" width="1400" height="2089" alt="A board lying on the sand, the Aloalo fin standing up from it." loading="lazy" decoding="async" />
       </figure>
     </section>
 
@@ -110,12 +150,11 @@
 
     <!-- 5.2 Set in glass -->
     <section class="glass" id="glass" aria-labelledby="glass-line">
-      <div class="glass-stage" id="glass-stage">
-        <picture class="glass-fallback" id="glass-fallback">
-          <source srcset="./assets/aloalo-fin-flatlay.webp" type="image/webp" />
-          <img src="./assets/aloalo-fin-flatlay.png" width="1078" height="1043" alt="The Aloalo fin. The print sits inside clear fiberglass and reads softer, like stained glass." loading="lazy" decoding="async" />
-        </picture>
-      </div>
+      <picture class="glass-photo">
+        <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="./film/glass-tall-700.webp 700w, ./film/glass-tall-1200.webp 1200w" sizes="100vw" />
+        <source type="image/webp" srcset="./film/glass-800.webp 800w, ./film/glass-1400.webp 1400w, ./film/glass-2400.webp 2400w" sizes="100vw" />
+        <img src="./film/glass-1400.webp" width="2400" height="1350" alt="The Aloalo fin standing out of the water with the sun directly behind it, the hibiscus print lit through like stained glass." loading="lazy" decoding="async" data-speed="0.08" />
+      </picture>
       <p class="glass-line" id="glass-line">The print MAOI swims in, set in glass.</p>
     </section>
 

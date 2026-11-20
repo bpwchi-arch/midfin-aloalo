@@ -32,6 +32,15 @@ Post phase shows the product link only while `open` fins remain and `showPostPha
 
 Klaviyo's client subscription endpoint, public company ID only (the public key `XY75NE` and the list "Aloalo Waitlist (Mid Fin x MAOI)", both in `site.config.json` under `klaviyo`). Subscribers land on that list with the profile properties `source: aloalo-microsite` and `interest: maoi-aloalo`.
 
+## The film and the photographs
+
+The page opens on the hero film, muted and looping, then dissolves into the flight through the print. The stills below it come from the same shoot. Everything lives in `public/film/` and is generated from the originals in Dropbox (`Collabs/MAOI Swim Cayla Moore/Zak Noyle`):
+
+- `node scripts/export-film.mjs "<Zak Noyle folder>"` exports the hero poster, the glass frame, the ten strip frames and the film photographs. The selection is the list at the bottom of that script.
+- `bash scripts/encode-loop.sh <ffmpeg> "<hero film .mov>"` encodes `loop-1080.mp4` and `loop-720.mp4`, stopping just before the film's end card. `node scripts/encode-tall.mjs <ffmpeg> "<hero film .mov>"` encodes the upright `loop-tall.mp4` for phones, reframed shot by shot so the fin stays in frame. If those files are missing the hero simply holds on the poster.
+
+To swap a photograph, change its number in `export-film.mjs`, re-run it, and update the matching `alt` text in `index.html`.
+
 ## Deploy
 
 Hosted on Vercel from this repo. Every push to `main` deploys. DNS for `aloalo.midfinco.com` lives in GoDaddy: a CNAME record, host `aloalo`, pointing at `cname.vercel-dns.com`.

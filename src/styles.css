@@ -136,7 +136,7 @@ p {
 }
 
 .hero-track.is-flight {
-  height: 300vh;
+  height: 360vh;
 }
 
 .hero {
@@ -170,6 +170,64 @@ p {
 
 .hero-flight.is-on {
   opacity: 1;
+}
+
+.hero-film {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  background: #0f2c2f;
+  will-change: opacity, transform;
+}
+
+.hero-film picture,
+.hero-film-poster,
+.hero-film-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-film-poster,
+.hero-film-video {
+  object-fit: cover;
+  object-position: 30% 50%;
+}
+
+.hero-film-poster {
+  animation: drift 26s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from { transform: scale(1); }
+  to { transform: scale(1.09) translate3d(-1.5%, 1%, 0); }
+}
+
+.hero-film-video {
+  object-position: 50% 50%;
+  opacity: 0;
+  transition: opacity 1.4s var(--ease);
+}
+
+.hero-film-video.is-playing {
+  opacity: 1;
+}
+
+/* A soft scrim top and bottom so the lockup and the cue always read. */
+.hero-film::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(15, 24, 20, 0.55), rgba(15, 24, 20, 0) 30%, rgba(15, 24, 20, 0) 72%, rgba(15, 24, 20, 0.5));
+  pointer-events: none;
+}
+
+@media (max-aspect-ratio: 4/5) {
+  .hero-film-poster {
+    object-position: 50% 50%;
+  }
 }
 
 .hero-mark {
@@ -268,57 +326,56 @@ p {
 /* ---------- Glass ---------- */
 
 .glass {
-  padding: clamp(72px, 12vh, 140px) var(--gutter) clamp(40px, 6vh, 72px);
-  display: grid;
-  justify-items: center;
-  gap: clamp(28px, 4vh, 48px);
-  background: var(--black);
-}
-
-.glass-stage {
   position: relative;
-  width: min(100%, 520px);
-  aspect-ratio: 1078 / 1043;
+  overflow: hidden;
+  background: var(--black);
+  height: min(100vh, 125vw);
+  height: min(100svh, 125vw);
 }
 
-.glass-stage canvas {
+@media (min-aspect-ratio: 4/5) {
+  .glass {
+    height: min(100vh, 56.25vw);
+    height: min(100svh, 56.25vw);
+  }
+}
+
+.glass-photo {
   position: absolute;
   inset: 0;
+}
+
+.glass-photo img {
+  position: absolute;
+  left: 0;
+  top: -9%;
   width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1.2s var(--ease);
+  height: 118%;
+  object-fit: cover;
+  will-change: transform;
 }
 
-.glass-stage.is-gl canvas {
-  opacity: 1;
-}
-
-.glass-fallback {
+.glass::after {
+  content: '';
   position: absolute;
   inset: 0;
-  border-radius: 50% 50% 46% 46% / 40% 40% 60% 60%;
-  background: radial-gradient(120% 90% at 30% 20%, #e3c1b4 0%, var(--rose) 45%, #7b4848 100%);
-  transition: opacity 1.2s var(--ease);
-}
-
-.glass-fallback img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 6%;
-  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.45));
-}
-
-.glass-stage.is-gl .glass-fallback {
-  opacity: 0;
+  background: linear-gradient(to top, rgba(15, 24, 20, 0.72), rgba(15, 24, 20, 0) 46%);
+  pointer-events: none;
 }
 
 .glass-line {
-  font-size: clamp(1.1rem, 1rem + 0.8vw, 1.6rem);
-  color: var(--blush);
-  text-align: center;
-  max-width: var(--measure);
+  position: absolute;
+  z-index: 1;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(28px, 7vh, 80px);
+  max-width: 15em;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.98;
+  font-size: clamp(2rem, 1.2rem + 3.6vw, 4.4rem);
+  color: var(--cream);
 }
 
 /* ---------- The 75 ---------- */
@@ -507,39 +564,154 @@ p {
 }
 
 
-/* ---------- Worn ---------- */
+/* ---------- The reel ---------- */
 
-.worn {
+.reel {
+  position: relative;
   background: var(--black);
-  padding: 0 var(--gutter) clamp(72px, 12vh, 140px);
-  display: grid;
-  gap: clamp(16px, 3vw, 40px);
-  max-width: 1180px;
-  margin: 0 auto;
 }
 
-.worn figure {
+/* Default (phones, touch, reduced motion): a row you swipe. */
+.reel-pin {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: clamp(24px, 5vh, 48px) 0 clamp(56px, 9vh, 96px);
+}
+
+.reel-pin::-webkit-scrollbar {
+  display: none;
+}
+
+.reel-row {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  padding: 0 var(--gutter);
+}
+
+.reel-frame {
   margin: 0;
+  flex: 0 0 auto;
+  width: 84vw;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 2px;
+  background: #16201b;
+  scroll-snap-align: center;
 }
 
-.worn img {
+.reel-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Pinned (desktop with a pointer): the page scrolls down, the film runs sideways. */
+.reel.is-pinned .reel-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  scroll-snap-type: none;
+}
+
+.reel.is-pinned .reel-row {
+  gap: 2.2vh;
+  padding: 0 9vw;
+  will-change: transform;
+}
+
+.reel.is-pinned .reel-frame {
+  width: auto;
+  height: 58vh;
+}
+
+.reel.is-pinned .reel-frame:nth-child(odd) {
+  transform: translateY(-4vh);
+}
+
+.reel.is-pinned .reel-frame:nth-child(even) {
+  transform: translateY(4vh);
+}
+
+.reel.is-pinned .reel-frame:nth-child(3n) {
+  height: 70vh;
+}
+
+/* ---------- The spread ---------- */
+
+.spread {
+  background: var(--black);
+  padding: clamp(24px, 6vh, 72px) var(--gutter) clamp(88px, 14vh, 180px);
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: clamp(40px, 12vw, 72px);
+}
+
+.sp {
+  margin: 0;
+  width: 78%;
+  will-change: transform;
+}
+
+.sp img {
   width: 100%;
   height: auto;
-  display: block;
-  filter: saturate(0.96);
+  background: #16201b;
+}
+
+.sp:nth-of-type(even) {
+  justify-self: end;
+}
+
+.spread .sp-flower,
+.spread .sp-two {
+  width: calc(100% + 2 * var(--gutter));
+  margin-left: calc(-1 * var(--gutter));
+  justify-self: start;
+}
+
+.sp-line {
+  margin-top: 0.9rem;
+  padding: 0 var(--gutter);
+  color: var(--blush);
+  font-size: clamp(1.05rem, 1rem + 0.5vw, 1.35rem);
 }
 
 @media (min-width: 900px) {
-  .worn {
-    grid-template-columns: 7fr 6fr;
+  .spread {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2.4vw, 40px);
+    row-gap: clamp(72px, 11vw, 170px);
+    max-width: 1560px;
+    margin: 0 auto;
     align-items: start;
   }
 
-  .worn-b {
-    margin-top: clamp(64px, 12vw, 160px);
+  .spread .sp,
+  .spread .sp:nth-of-type(even) {
+    width: auto;
+    margin-left: 0;
+    justify-self: stretch;
   }
+
+  .sp-line {
+    padding: 0;
+  }
+
+  .sp-flower { grid-column: 1 / span 8; }
+  .sp-face { grid-column: 9 / span 4; margin-top: 18vw; }
+  .sp-fin { grid-column: 1 / span 5; }
+  .sp-two { grid-column: 6 / span 7; margin-top: 12vw; }
+  .sp-shore { grid-column: 2 / span 5; }
+  .sp-water { grid-column: 8 / span 4; margin-top: 18vw; }
+  .sp-dusk { grid-column: 1 / span 5; }
+  .sp-sand { grid-column: 7 / span 5; margin-top: 14vw; }
 }
 
 /* ---------- Where ---------- */
@@ -790,7 +962,17 @@ p {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-film {
+    display: none;
+  }
+}
+
 /* No-JS: still a complete page */
+.no-js .hero-film {
+  display: none;
+}
+
 .no-js .hero-copy {
   opacity: 1;
 }
