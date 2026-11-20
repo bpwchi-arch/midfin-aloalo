@@ -274,11 +274,6 @@ p {
   transform-origin: center;
 }
 
-.hero-cut {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-}
-
 .hero-copy {
   position: relative;
   z-index: 2;
@@ -979,10 +974,6 @@ p {
 
 .no-js .hero-copy {
   opacity: 1;
-}
-
-.no-js .hero-cut {
-  stroke-dashoffset: 0;
 }
 
 .no-js #hero-dim {
