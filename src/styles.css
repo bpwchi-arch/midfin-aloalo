@@ -947,6 +947,10 @@ p {
   max-width: 30rem;
 }
 
+.footer-credit + .footer-credit {
+  margin-top: -0.6rem;
+}
+
 /* ---------- Motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
