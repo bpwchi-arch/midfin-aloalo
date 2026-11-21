@@ -4,7 +4,8 @@ export type Phase = 'pre' | 'event' | 'post';
 
 export const config = raw as {
   phaseOverride: Phase | null;
-  eventDateHST: string;
+  eventStartHST: string;
+  eventEndHST: string;
   timezone: string;
   productUrl: string;
   b2bApplicationUrl: string;
@@ -32,8 +33,8 @@ export function computePhase(): Phase {
   }
   if (config.phaseOverride) return config.phaseOverride;
   const today = honoluluToday();
-  if (today < config.eventDateHST) return 'pre';
-  if (today === config.eventDateHST) return 'event';
+  if (today < config.eventStartHST) return 'pre';
+  if (today <= config.eventEndHST) return 'event';
   return 'post';
 }
 
