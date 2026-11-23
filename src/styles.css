@@ -759,6 +759,15 @@ p {
   color: var(--rose);
 }
 
+.step .step-hours {
+  margin-top: 0.3rem;
+  color: rgba(32, 40, 32, 0.75);
+}
+
+.step-hours span {
+  display: block;
+}
+
 .shops {
   list-style: none;
   padding: 0;

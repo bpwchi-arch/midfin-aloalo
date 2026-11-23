@@ -1,6 +1,6 @@
 import './styles.css';
 import '@fontsource-variable/figtree';
-import { config, computePhase } from './config';
+import { config, computePhase, honoluluToday } from './config';
 import { COPY } from './copy';
 import { Hero } from './hero';
 import { supportsFlight, startFlight } from './flight';
@@ -40,7 +40,7 @@ function applyPhase(): void {
   const buy = phase === 'post' && remaining > 0 && config.showPostPhaseBuyLink;
 
   if (phase === 'event') {
-    note.textContent = COPY.eventBanner;
+    note.textContent = COPY.eventBanner(config.eventHours[honoluluToday()]);
     note.hidden = false;
   }
 

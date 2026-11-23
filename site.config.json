@@ -2,6 +2,10 @@
   "phaseOverride": null,
   "eventStartHST": "2026-11-27",
   "eventEndHST": "2026-11-28",
+  "eventHours": {
+    "2026-11-27": "3 to 8 pm",
+    "2026-11-28": "10 am to 8 pm"
+  },
   "timezone": "Pacific/Honolulu",
   "productUrl": "https://midfinco.com/products/maoi-common",
   "b2bApplicationUrl": "https://midfinco.com/pages/b2b-application",

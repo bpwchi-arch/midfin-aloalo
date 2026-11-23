@@ -24,7 +24,7 @@ Kilo's rules say nothing is spoken for before the event, so `allocated` fins loo
 
 ## Change the phase
 
-The page reads Honolulu time and switches on its own: `pre` before November 27, `event` on both days of Kilo Summit (November 27 and 28), `post` from November 29. The two dates are `eventStartHST` and `eventEndHST` in `site.config.json`. To force a state, set `phaseOverride` in `site.config.json` to `"pre"`, `"event"` or `"post"` (back to `null` to let the date decide). In local dev you can also append `?phase=post` to the URL.
+The page reads Honolulu time and switches on its own: `pre` before November 27, `event` on both days of Kilo Mart (Friday November 27, 3 to 8 pm, and Saturday November 28, 10 am to 8 pm, Fort Street Mall at Pauahi Street, downtown Honolulu), `post` from November 29. The two dates are `eventStartHST` and `eventEndHST` in `site.config.json`; `eventHours` beside them holds each day's opening hours, which the hero shows on the day ("Today at Kilo Mart, Fort Street Mall, 3 to 8 pm."). To force a state, set `phaseOverride` in `site.config.json` to `"pre"`, `"event"` or `"post"` (back to `null` to let the date decide). In local dev you can also append `?phase=post` to the URL.
 
 Post phase shows the product link only while `open` fins remain and `showPostPhaseBuyLink` is `true`. When none remain the page reads "All 75 have a home."
 

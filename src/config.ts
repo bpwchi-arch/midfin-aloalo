@@ -6,6 +6,8 @@ export const config = raw as {
   phaseOverride: Phase | null;
   eventStartHST: string;
   eventEndHST: string;
+  /** Opening hours per event day, keyed by Honolulu date. Shown in the hero during the event. */
+  eventHours: Record<string, string>;
   timezone: string;
   productUrl: string;
   b2bApplicationUrl: string;
